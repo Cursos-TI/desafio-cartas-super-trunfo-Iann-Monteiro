@@ -1,43 +1,60 @@
 #include <stdio.h>
 
-int main() {
-    typedef struct {
+ typedef struct {
         char nome[50];
         unsigned long int populacao;
         float area;
         unsigned int numPontosTuristicos;
-    } Carta;
+        double densidadePopulacional;
+        double pib;
+        double pibPerC;
+} Carta;
 
-    Carta cartas[];
+void calculaPropriedades(Carta *c){
+    c->densidadePopulacional = (double)c->populacao / c->area;
+    c->pibPerC = c->pib / c->populacao;
+}
 
-    printf("Bem vindo ao SUPER TRUNFO\n\n")
+int main() {
+   
+    Carta cartas[3];
+
+    printf("Bem vindo ao SUPER TRUNFO\n");
 
     for(int i = 1; i <= 2; i++){
 
-        Carta c;
-
-        printf("Insira os Dados da Carta %d", i);
+        printf("\nInsira os Dados da Carta %d\n\n", i);
         
         printf("Nome: ");
-        scanf("%[^\n]s", c.nome);
+        scanf(" %[^\n]s", cartas[i].nome);
         getchar();
 
-        printf("População: ");
-        scanf("%lu", &c.populacao);
+        printf("\nPopulação: ");
+        scanf("%lu", &cartas[i].populacao);
 
-        printf("Área: ");
-        scanf("%f", &c.area);
+        printf("\nÁrea: ");
+        scanf("%f", &cartas[i].area);
 
-        printf("Número de Pontos Turísticos: ");
-        scanf("%u", &c.numPontosTuristicos);
+        printf("\nNúmero de Pontos Turísticos: ");
+        scanf("%u", &cartas[i].numPontosTuristicos);
+        getchar();
 
-        cartas[i] = c;
+        printf("\nPIB: ");
+        scanf("%lf", &cartas[i].pib);
 
-        printf("\nDados da Carta:\n");
-        printf("Nome: %s\n", c.nome);
-        printf("População: %lu\n", c.populacao);
-        printf("Área: %.2f\n", c.area);
-        printf("Número de Pontos Turísticos: %u\n", c.numPontosTuristicos);
+        calculaPropriedades(&cartas[i]);
+    }
+
+    printf("\nDados das Cartas:\n");
+    for(int i = 1; i <= 2; i++) {
+        printf("\nCarta %d:\n", i);
+        printf("Nome: %s\n", cartas[i].nome);
+        printf("População: %lu\n", cartas[i].populacao);
+        printf("Área: %.2f\n", cartas[i].area);
+        printf("Número de Pontos Turísticos: %u\n", cartas[i].numPontosTuristicos);
+        printf("Densidade Populacional: %.2f\n", cartas[i].densidadePopulacional);
+        printf("PIB: %.2f\n", cartas[i].pib);
+        printf("PIB per Capita: %.2f\n", cartas[i].pibPerC);
     }
 
     return 0;
