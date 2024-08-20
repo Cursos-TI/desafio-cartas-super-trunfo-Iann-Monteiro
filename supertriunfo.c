@@ -11,7 +11,7 @@
 } Carta;
 
 void calculaPropriedades(Carta *c){
-    c->densidadePopulacional = (double)c->populacao / c->area;
+    c->densidadePopulacional = c->populacao / c->area;
     c->pibPerC = c->pib / c->populacao;
 }
 
@@ -52,15 +52,15 @@ int main() {
     for(int i = 1; i <= 2; i++) {
         printf("\nCarta %d:\n", i);
         printf("Nome: %s\n", cartas[i].nome);
-        printf("População: %lu\n", cartas[i].populacao);
+        printf("População: %.2f\n", cartas[i].populacao);
         printf("Área: %.2f\n", cartas[i].area);
-        printf("Número de Pontos Turísticos: %u\n", cartas[i].numPontosTuristicos);
+        printf("Número de Pontos Turísticos: %f\n", cartas[i].numPontosTuristicos);
         printf("Densidade Populacional: %.2f\n", cartas[i].densidadePopulacional);
         printf("PIB: %.2f\n", cartas[i].pib);
         printf("PIB per Capita: %.2f\n", cartas[i].pibPerC);
     }
 
-    printf("\nQual carta é a mais forte?\n");
+    printf("\nQual carta é a mais forte?\n\n");
     printf("Densidade Populacional: \n");
     if(cartas[1].densidadePopulacional > cartas[2].densidadePopulacional){
         printf("Carta %s Venceu!\n", cartas[2].nome);
@@ -72,8 +72,8 @@ int main() {
         printf("Empate!\n");
     }
 
-    printf("Outras Propriedades: \n");
-    printf("População: \n");
+    printf("\nOutras Propriedades: \n");
+    printf("\nPopulação: \n");
     if(cartas[1].populacao > cartas[2].populacao){
         printf("Carta %s Venceu!\n", cartas[1].nome);
         contadorA++;
@@ -84,8 +84,7 @@ int main() {
         printf("Empate!\n");
     }
 
-    printf("Outras Propriedades: \n");
-    printf("Área: \n");
+    printf("\nÁrea: \n");
     if(cartas[1].area > cartas[2].area){
         printf("Carta %s Venceu!\n", cartas[1].nome);
         contadorA++;
@@ -96,8 +95,7 @@ int main() {
         printf("Empate!\n");
     }
 
-    printf("Outras Propriedades: \n");
-    printf("Número de Pontos Turísticos: \n");
+    printf("\nNúmero de Pontos Turísticos: \n");
     if(cartas[1].numPontosTuristicos > cartas[2].numPontosTuristicos){
         printf("Carta %s Venceu!\n", cartas[1].nome);
         contadorA++;
@@ -108,8 +106,7 @@ int main() {
         printf("Empate!\n");
     }
     
-    printf("Outras Propriedades: \n");
-    printf("Pib: \n");
+    printf("\nPib: \n");
     if(cartas[1].pib > cartas[2].pib){
         printf("Carta %s Venceu!\n", cartas[1].nome);
         contadorA++;
@@ -120,8 +117,7 @@ int main() {
         printf("Empate!\n");
     }
 
-    printf("Outras Propriedades: \n");
-    printf("Pib per Capita: \n");
+    printf("\nPib per Capita: \n");
     if(cartas[1].pibPerC > cartas[2].pibPerC){
         printf("Carta %s Venceu!\n", cartas[1].nome);
         contadorA++;
@@ -132,13 +128,13 @@ int main() {
         printf("Empate!\n");
     }
 
-    printf("Placar Total: \n");
+    printf("\nPlacar Total: \n");
     if(contadorA > contadorB){
-        printf("Carta %s Venceu!\n", cartas[1].nome);
+        printf("Carta %s Venceu! Resultado: %d a %d\n", cartas[1].nome, contadorA, contadorB);
     }else if(contadorA < contadorB){
-        printf("Carta %s Venceu!\n", cartas[2].nome);
+        printf("Carta %s Venceu!Resultado: %d a %d\n", cartas[2].nome, contadorA, contadorB);
     }else{
-        printf("Empate!\n");
+        printf("Empate! Resultado: %d a %d\n", contadorA, contadorB);
     }
 
     return 0;
